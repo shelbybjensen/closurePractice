@@ -71,6 +71,14 @@ function makeCounter() {
   After the function has been called N number of times, console.log('STAHHP');
 */
 
+var myFunc = function(x) {
+  function myFunc2(){
+    x();
+  }
+  return myFunc2;
+}
+
+
 
 
 
