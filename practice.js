@@ -71,14 +71,39 @@ function makeCounter() {
   After the function has been called N number of times, console.log('STAHHP');
 */
 
-var myFunc = function(x) {
-  function myFunc2(){
-    x();
-  }
-  return myFunc2;
+var outer = function(fn) {
+    var counter = 0;
+    return function() {
+        if (counter < 1) {
+        fn();
+        counter++;
+        }
+    }
+}
+var inner = outer(function() {
+    console.log('The function that was passed in has been invoked')
+});
+
+// OR var callBack = function(){console.log('The function that was passed in has been invoked')}
+// var inner = outer(callBack);
+
+// 2nd part of problem
+
+var outer = function(fn, n) {
+    var counter = 0;
+    return function() {
+        if (counter < n) {
+        fn();
+        counter++;
+        } else {
+          console.log('STAHHHHP')
+        }
+    }
 }
 
+var callBack = function(){console.log('The function that was passed in has been invoked')
 
+var inner = outer(callBack, 5)
 
 
 
